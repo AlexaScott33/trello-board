@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import AddForm from './add-form';
+
 class Board extends Component {
     render() {
         console.log(this.props);
@@ -9,7 +11,8 @@ class Board extends Component {
                 <ul className="lists">
                 <li className="list-wrapper">This will be a LIST</li>
                     <li className="add-list-wrapper">
-                        this will be ADDFORM
+                        <AddForm 
+                        type="list"/>
                     </li>
                 </ul>
             </div>
