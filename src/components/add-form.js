@@ -11,21 +11,22 @@ class AddForm extends Component {
     }
 
     onSubmit(e) {
-        console.log('submitting!');
-        e.preventDefault();
         const text = this.textInput.value.trim();
-        console.log(text);
+        if (text && this.props.onAdd) {
+            this.props.onAdd(text);
+        }
+        this.textInput.value = '';
     }
-
-
 
     setEditing(editing) {
         this.setState({
             editing
         });
     }
+
     render() {
         console.log(this.state);
+        console.log(this.props.onAdd);
         if (!this.state.editing) {
             return(
                 <div className="add-button"
@@ -36,9 +37,11 @@ class AddForm extends Component {
         }
         return(
             <form className="card add-form"
-            onSubmit={(e) => this.onSubmit(e)}>
-                <input type="text" ref={input => this.textInput = input} />
-                <button type="button">Add</button>
+            onSubmit={(e) => {
+                e.preventDefault();
+                this.onSubmit(e.target.textInput.value)}}>
+                <input type="text" name="textInput" ref={input => this.textInput = input} />
+                <button type="submit">Add</button>
                 <button type="button"
                 onClick={() => this.setEditing(false)}>Cancel</button>
             </form>
