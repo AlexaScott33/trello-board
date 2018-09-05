@@ -19,6 +19,8 @@ margin-bottom: 0;
 list-style-type: none;
 }
 
+ul.lists {
+}
 
 input {
   display: block;
